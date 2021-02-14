@@ -1,31 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
 spec:
-  replicas: 1 
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: hello-world
   template:
     metadata:
       labels:
         app: hello-world
     spec:
       containers:
-      - name: hello-world
-        image: index.docker.io/aurimassk/demo:latest
-        ports: 
-        - containerPort: 80
-        - containerPort: 443
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-world-service
-spec:
-  selector:
-    app: hello-world
-  ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 8080
-  type: LoadBalancer
+      # modify the following line with your Docker Hub account name
+      - image: index.docker.io/aurimassk/demo:latest
+        name: hello-world
+        ports:
+        - containerPort: 8080
