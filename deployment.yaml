@@ -10,8 +10,8 @@ spec:
         app: hello-world
     spec:
       containers:
-      - name: hello-world-pod
-        image: arungupta/helloworld-spring-boot:latest
+      - name: hello-world
+        image: index.docker.io/aurimassk/demo:latest
         ports: 
         - containerPort: 80
         - containerPort: 443
