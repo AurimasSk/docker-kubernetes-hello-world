@@ -11,4 +11,4 @@ FROM openjdk:8-jre-alpine
 WORKDIR /app
 COPY --from=1 /app/target/*.jar /app
 
-CMD ["java","-jar","argocd-hello-worl.jar"]
+CMD ["java","-jar","docker-kubernetes-hello-world.jar"]
